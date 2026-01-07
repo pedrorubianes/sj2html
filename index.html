@@ -202,19 +202,19 @@
         </div>
 
         <!-- VIDEO -->
-        <div class="w-full shadow-2xl rounded-lg overflow-hidden bg-black mb-6">
+        <div
+          class="w-full shadow-2xl rounded-lg overflow-hidden bg-black mb-6"
+        >
           <div
-            id="vturb-container"
-            class="w-full relative bg-black rounded-lg overflow-hidden"
+            class="relative w-full"
             style="padding-bottom:56.25%;min-height:200px;"
           >
             <iframe
-              id="vturb-player"
-              src=""
-              class="absolute top-0 left-0 w-full h-full border-0"
+              src="https://scripts.converteai.net/3734209a-46df-48aa-9082-d8194978d00e/players/694edf49ed1852c895de5d77/embed.html"
+              class="absolute top-0 left-0 w-full h-full border-0 rounded-lg"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
-              loading="lazy"
+              loading="eager"
               title="Video Player"
             ></iframe>
           </div>
@@ -461,37 +461,6 @@
 
   </div>
 
-  <!-- Vturb: lazy load via IntersectionObserver -->
-  <script>
-    (function () {
-      var container = document.getElementById("vturb-container");
-      var iframe = document.getElementById("vturb-player");
 
-      if (!container || !iframe) return;
-
-      function loadVturb() {
-        if (iframe.src) return;
-
-        iframe.src =
-          "https://scripts.converteai.net/3734209a-46df-48aa-9082-d8194978d00e/players/694edf49ed1852c895de5d77/v4/embed.html";
-      }
-
-      if ("IntersectionObserver" in window) {
-        var io = new IntersectionObserver(
-          function (entries) {
-            if (entries[0].isIntersecting) {
-              loadVturb();
-              io.disconnect();
-            }
-          },
-          { threshold: 0.25 }
-        );
-
-        io.observe(container);
-      } else {
-        setTimeout(loadVturb, 1200);
-      }
-    })();
-  </script>
 </body>
 </html>
