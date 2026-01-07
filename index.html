@@ -142,6 +142,7 @@
     .hover\:opacity-100:hover{opacity:1}
 
     .content-visibility-auto{content-visibility:auto}
+    .border-0{border:0}
 
     @media(min-width:768px){
       .md\:py-10{padding-top:2.5rem;padding-bottom:2.5rem}
@@ -189,7 +190,7 @@
           <div class="text-center px-2">
             <img
               src="https://res.cloudinary.com/dundbvqf8/image/upload/f_auto,q_auto/v1767787765/imagem-headline-slimjara_jtx4cj.png"
-              alt="Achtung! Verwenden Sie diese „bariatrische Gelatine“ niemals, wenn Sie nicht Ihre gesamte Garderobe austauschen möchten"
+              alt="Achtung! Verwenden Sie diese „bariatrische Gelatine" niemals, wenn Sie nicht Ihre gesamte Garderobe austauschen möchten"
               class="w-full mx-auto max-w-[800px]"
               width="800"
               height="180"
@@ -204,17 +205,18 @@
         <div class="w-full shadow-2xl rounded-lg overflow-hidden bg-black mb-6">
           <div
             id="vturb-container"
-            class="w-full relative bg-black rounded-lg"
+            class="w-full relative bg-black rounded-lg overflow-hidden"
             style="padding-bottom:56.25%;min-height:200px;"
           >
-            <!-- Placeholder: mantém layout e evita CLS -->
-            <div
-              id="vturb-placeholder"
-              class="absolute top-0 left-0 w-full h-full"
-              style="display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;"
-            >
-              Video wird geladen…
-            </div>
+            <iframe
+              id="vturb-player"
+              src=""
+              class="absolute top-0 left-0 w-full h-full border-0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+              title="Video Player"
+            ></iframe>
           </div>
         </div>
 
@@ -242,7 +244,7 @@
       </div>
     </section>
 
-    <!-- FB COMMENTS (mantido fiel) -->
+    <!-- FB COMMENTS -->
     <section class="fb-comments w-full bg-white content-visibility-auto">
       <style>
         :root{
@@ -276,7 +278,7 @@
           <span>Sortieren nach: <strong style="color:#1877F2;">Relevanteste</strong></span>
         </div>
 
-        <!-- Comments list (igual ao seu DOM) -->
+        <!-- Comments list -->
         <div class="comment">
           <div class="row">
             <img class="avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Anna Keller" loading="lazy" width="42" height="42" decoding="async">
@@ -292,7 +294,7 @@
               <img class="avatar" src="https://randomuser.me/api/portraits/women/22.jpg" alt="Patricia Neumann" loading="lazy" width="30" height="30" decoding="async">
               <div class="bubble">
                 <p class="name">Patricia Neumann</p>
-                <p class="text">Mir geht’s gar nicht nur um Zahlen. Ich fühl mich endlich wieder wohl in meinem Körper. Das hatte ich ewig nicht.</p>
+                <p class="text">Mir geht's gar nicht nur um Zahlen. Ich fühl mich endlich wieder wohl in meinem Körper. Das hatte ich ewig nicht.</p>
               </div>
             </div>
             <div class="meta">Gefällt mir 🔥 41 · vor 2 Std.</div>
@@ -315,7 +317,7 @@
             <img class="avatar" src="https://randomuser.me/api/portraits/women/50.jpg" alt="Laura Stein" loading="lazy" width="42" height="42" decoding="async">
             <div class="bubble">
               <p class="name">Laura Stein</p>
-              <p class="text">Dr. Matthias ist einfach klasse 👏</p>
+              <p class="text">Dr. Matthias ist einfach klasse 👍</p>
             </div>
           </div>
           <div class="meta">Gefällt mir 🔥 88 · vor 5 Std.</div>
@@ -381,7 +383,7 @@
             <img class="avatar" src="https://randomuser.me/api/portraits/women/11.jpg" alt="Johanna Berg" loading="lazy" width="42" height="42" decoding="async">
             <div class="bubble">
               <p class="name">Johanna Berg</p>
-              <p class="text">Oh mein Gott, ja! Ich war so müde von all den schnellen „Lösungen“!</p>
+              <p class="text">Oh mein Gott, ja! Ich war so müde von all den schnellen „Lösungen"!</p>
             </div>
           </div>
           <div class="meta">Gefällt mir 🔥 23 · vor 9 Std.</div>
@@ -403,7 +405,7 @@
             <img class="avatar" src="https://randomuser.me/api/portraits/women/63.jpg" alt="Carolin Metz" loading="lazy" width="42" height="42" decoding="async">
             <div class="bubble">
               <p class="name">Carolin Metz</p>
-              <p class="text">Ich hab’s ohne Erwartungen getestet und bin echt schockiert! Nach nur einer Woche fühl ich mich wie ein neuer Mensch 😂</p>
+              <p class="text">Ich hab's ohne Erwartungen getestet und bin echt schockiert! Nach nur einer Woche fühl ich mich wie ein neuer Mensch 😂</p>
             </div>
           </div>
           <div class="meta">Gefällt mir 🔥 44 · vor 10 Std.</div>
@@ -436,7 +438,7 @@
             <img class="avatar" src="https://randomuser.me/api/portraits/women/16.jpg" alt="Gabriela Vogt" loading="lazy" width="42" height="42" decoding="async">
             <div class="bubble">
               <p class="name">Gabriela Vogt</p>
-              <p class="text">Dr. Matthias trifft’s jedes Mal und sagt, was sonst keiner ausspricht! Du bist meine Inspiration ❤️ Und ich mach weiter, endlich passe ich wieder in meine alten Sachen haha</p>
+              <p class="text">Dr. Matthias trifft's jedes Mal und sagt, was sonst keiner ausspricht! Du bist meine Inspiration ❤️ Und ich mach weiter, endlich passe ich wieder in meine alten Sachen haha</p>
             </div>
           </div>
           <div class="meta">Gefällt mir 🔥 140 · vor 15 Std.</div>
@@ -459,32 +461,31 @@
 
   </div>
 
-  <!-- Vturb: lazy de execução por viewport (seguro para conversão) -->
+  <!-- Vturb: lazy load via IntersectionObserver -->
   <script>
     (function () {
       var container = document.getElementById("vturb-container");
-      var placeholder = document.getElementById("vturb-placeholder");
-      if (!container) return;
+      var iframe = document.getElementById("vturb-player");
+
+      if (!container || !iframe) return;
 
       function loadVturb() {
-        if (window.__vturbLoaded) return;
-        window.__vturbLoaded = true;
+        if (iframe.src) return;
 
-        if (placeholder) placeholder.style.display = "none";
-
-        var s = document.createElement("script");
-        s.async = true;
-        s.src = "https://scripts.converteai.net/3734209a-46df-48aa-9082-d8194978d00e/players/694edf49ed1852c895de5d77/v4/player.js";
-        document.body.appendChild(s);
+        iframe.src =
+          "https://scripts.converteai.net/3734209a-46df-48aa-9082-d8194978d00e/players/694edf49ed1852c895de5d77/v4/embed.html";
       }
 
       if ("IntersectionObserver" in window) {
-        var io = new IntersectionObserver(function (entries) {
-          if (entries[0] && entries[0].isIntersecting) {
-            loadVturb();
-            io.disconnect();
-          }
-        }, { threshold: 0.2 });
+        var io = new IntersectionObserver(
+          function (entries) {
+            if (entries[0].isIntersecting) {
+              loadVturb();
+              io.disconnect();
+            }
+          },
+          { threshold: 0.25 }
+        );
 
         io.observe(container);
       } else {
